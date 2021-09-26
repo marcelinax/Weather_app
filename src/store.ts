@@ -1,7 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
+import weatherSlice from "./state/weatherSlice";
 
 const store = configureStore({
-    reducer: {},
+    reducer: {
+        weather: weatherSlice
+    },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
