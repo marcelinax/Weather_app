@@ -1,9 +1,13 @@
 import moment from "moment";
 
-const getTimeForCity = (a: number): string => {
-    const date = new Date(a);
+const getTimeForCity = (dt: number, timezone: number): string => {
+    const date = new Date(+dt * 1000 + timezone * 1000);
+    if (moment(date).isDST()) {
+        return moment(new Date(+dt * 1000 + timezone * 1000 - 3600 * 1000 - 3600 * 1000)).format("h a");
+    } else {
+        return moment(date).format("h a");
+    }
 
-    return moment(date).format("HH mm");
 };
 
 export default getTimeForCity;

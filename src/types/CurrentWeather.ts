@@ -8,7 +8,7 @@ export default interface CurrentWeather {
         main: string,
         description: string,
         icon: string
-    };
+    }[];
     base: string;
     main: {
         temp: number,
